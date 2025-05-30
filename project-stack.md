@@ -50,6 +50,6 @@ Este documento descreve a stack de tecnologias adotada para o desenvolvimento do
 
 ---
 
-## :puzzle_piece: Considerações
+## :scroll: Considerações
 
 A stack escolhida visa atender os requisitos de desempenho, segurança, escalabilidade, rastreabilidade, integração via APIs, responsividade e manutenção a longo prazo.
