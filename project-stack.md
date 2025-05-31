@@ -9,8 +9,10 @@ Este documento descreve a stack de tecnologias adotada para o desenvolvimento do
 - **Framework:** [Next.js](https://nextjs.org/)
 - **Linguagem:** TypeScript
 - **Estilização:** Tailwind CSS
+- **Biblioteca de UI:** [shadcn/ui](https://ui.shadcn.com/)
 - **Gerenciamento de Estado:** Zustand (ou Redux Toolkit, conforme necessidade)
-- **Testes:** React Testing Library + Jest
+- **Testes:** Vitest (testes de unidade e integração)
+- **Gerenciamento de formulários:** React Hook Form
 
 ### :gear: Backend
 
