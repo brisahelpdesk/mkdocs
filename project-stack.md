@@ -22,6 +22,7 @@ Este documento descreve a stack de tecnologias adotada para o desenvolvimento do
 - **Validação:** Class-validator / class-transformer
 - **Segurança:** Helmet, bcrypt, CORS, Rate Limiting
 - **Documentação:** Swagger
+- **Exportação de arquivos:** PDFKit (ou Puppeteer para HTML -> PDF)
 
 ### :floppy_disk: Banco de Dados
 
