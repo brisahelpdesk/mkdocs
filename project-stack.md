@@ -23,6 +23,7 @@ Este documento descreve a stack de tecnologias adotada para o desenvolvimento do
 - **Segurança:** Helmet, bcrypt, CORS, Rate Limiting
 - **Documentação:** Swagger
 - **Exportação de arquivos:** PDFKit (ou Puppeteer para HTML -> PDF)
+- **Serviço de emails:** [Nodemailer](https://nodemailer.com/) e [Ethereal Email](https://ethereal.email/)
 
 ### :floppy_disk: Banco de Dados
 
