@@ -22,7 +22,7 @@ Este documento descreve a stack de tecnologias adotada para o desenvolvimento do
 - **Validação:** Class-validator / class-transformer
 - **Segurança:** Helmet, bcrypt, CORS, Rate Limiting
 - **Documentação:** Swagger
-- **Exportação de arquivos:** PDFKit (ou Puppeteer para HTML -> PDF)
+- **Exportação de arquivos:** PDFKit (ou Puppeteer)
 - **Emails:** [Nodemailer](https://nodemailer.com/) e [Ethereal Email](https://ethereal.email/)
 
 ### :floppy_disk: Banco de Dados
