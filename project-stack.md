@@ -43,7 +43,7 @@ Este documento descreve a stack de tecnologias adotada para o desenvolvimento do
 ### :test_tube: Testes
 
 - Backend: Jest + Supertest
-- Frontend: Testing Library + Cypress (E2E)
+- Frontend: Vitest (testes de unidade e integração)
 
 ### :rocket: DevOps e Infraestrutura
 
