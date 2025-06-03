@@ -14,6 +14,7 @@ Este documento descreve a stack de tecnologias adotada para o desenvolvimento do
 - **Testes:** Vitest (testes de unidade e integração)
 - **Gerenciamento de formulários:** React Hook Form
 - **WebSockets:** [socket.io-client](https://www.npmjs.com/package/socket.io-client) (para chat, notificações e reatribuição de chamados)
+- **Gerenciador de pacotes:** [pnpm](https://pnpm.io/)
 
 ### Backend
 
@@ -25,6 +26,7 @@ Este documento descreve a stack de tecnologias adotada para o desenvolvimento do
 - **Documentação:** Swagger
 - **Exportação de arquivos:** PDFKit (ou Puppeteer)
 - **Emails:** [Nodemailer](https://nodemailer.com/) e [Ethereal Email](https://ethereal.email/)
+- **Gerenciador de pacotes:** [pnpm](https://pnpm.io/)
 
 ### Banco de Dados
 
