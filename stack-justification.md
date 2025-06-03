@@ -89,14 +89,14 @@ Isso demanda **organização**, **modularidade**, **autenticação segura**, **v
 
 | Critério                           | Fastify                      | NestJS                                                              |
 |------------------------------------|------------------------------|----------------------------------------------------------------------|
-| Curva de aprendizado inicial       | :white_check_mark: Baixa     | :warning: Moderada (natural para devs com background Spring)        |
-| Estrutura pronta para escalar      | :x: Você constrói do zero    | :white_check_mark: Vem com módulos, DI, guards, pipes, middlewares |
+| Curva de aprendizado inicial       | Baixa     | Moderada (natural para devs com background Spring)        |
+| Estrutura pronta para escalar      | Você constrói do zero    | Vem com módulos, DI, guards, pipes, middlewares |
 | Organização de código              | Flexível (você define)       | Altamente modular, separação clara por responsabilidade             |
 | Documentação e comunidade          | Boa, mas menor               | Excelente, com muitos tutoriais e exemplos                          |
-| Integrações (WebSocket, Swagger)   | Manual                       | :white_check_mark: Suporte oficial integrado                        |
-| Produtividade a médio prazo        | Pode cair sem estrutura      | :white_check_mark: Mantida pela arquitetura                         |
-| Adoção por devs vindos de Spring   | Mais distante conceitualmente| :white_check_mark: Filosofia muito semelhante                       |
-| Flexibilidade                      | :white_check_mark: Total     | :warning: Limitado por estrutura opinativa (mas mais seguro)       |
+| Integrações (WebSocket, Swagger)   | Manual                       | Suporte oficial integrado                        |
+| Produtividade a médio prazo        | Pode cair sem estrutura      | Mantida pela arquitetura                         |
+| Adoção por devs vindos de Spring   | Mais distante conceitualmente| Filosofia muito semelhante                       |
+| Flexibilidade                      | Total     | Limitado por estrutura opinativa (mas mais seguro)       |
 
 ---
 
@@ -110,6 +110,37 @@ Isso demanda **organização**, **modularidade**, **autenticação segura**, **v
 - **Recursos integrados:** WebSocket, autenticação JWT, Swagger, ORM, validações, middlewares.
 - **Documentação e tutoriais ricos:** excelente base para aprendizado e implementação eficiente.
 - **Manutenção facilitada a longo prazo**, com boa separação de responsabilidades.
+
+---
+
+## Gerenciador de Pacotes
+
+Durante a definição da stack, foram avaliados os principais gerenciadores de pacotes utilizados no ecossistema JavaScript/TypeScript, com base em critérios como desempenho, eficiência em projetos com múltiplas aplicações (frontend e backend), lockfile determinístico e compatibilidade com ferramentas modernas como Next.js, NestJS e Prisma.
+
+A tabela a seguir resume as opções consideradas:
+
+| Gerenciador | Popularidade | Velocidade        | Lockfile determinístico | Suporte a monorepos | Comentários                           |
+|-------------|--------------|-------------------|--------------------------|----------------------|----------------------------------------|
+| **npm**     | Altíssima    | Médio              | Desde v5              | Limitado         | Padrão do Node.js, confiável, mas básico |
+| **Yarn**    | Alta         | Rápido             | (`yarn.lock`)         | Bom suporte       | Estável e amplamente adotado           |
+| **pnpm**    | Crescendo    | Muito rápido     | (`pnpm-lock.yaml`)    | Excelente         | Altamente eficiente em monorepos e cache compartilhado |
+
+#### **Gerenciador escolhido:** [`pnpm`](https://pnpm.io/)
+- **Motivo da escolha:**
+  - Instalação mais rápida que `npm` ou `yarn`, utilizando links simbólicos ao invés de cópias diretas.
+  - Mais eficiente no uso de disco, com cache compartilhado entre projetos.
+  - Excelente suporte a projetos separados ou organizados como monorepos (frontend + backend).
+  - Gera lockfile determinístico (`pnpm-lock.yaml`), garantindo builds reproduzíveis.
+  - Totalmente compatível com ferramentas modernas da stack como **Next.js**, **NestJS**, **Prisma** e **Vitest**.
+
+- **Considerações adicionais:**
+  - Todos os desenvolvedores devem instalar o `pnpm` globalmente:
+    ```bash
+    npm install -g pnpm
+    ```
+  - Alguns ajustes mínimos podem ser necessários em scripts ou ferramentas (ex: `prisma generate`), mas são bem documentados.
+
+O `pnpm` será utilizado tanto no frontend quanto no backend para garantir consistência, performance e previsibilidade na gestão de dependências.
 
 ---
 
