@@ -13,6 +13,7 @@ Este documento descreve a stack de tecnologias adotada para o desenvolvimento do
 - **Gerenciamento de Estado:** Zustand (ou Redux Toolkit, conforme necessidade)
 - **Testes:** Vitest (testes de unidade e integração)
 - **Gerenciamento de formulários:** React Hook Form
+- **WebSockets:** [socket.io-client](https://www.npmjs.com/package/socket.io-client) (para chat, notificações e reatribuição de chamados)
 
 ### :gear: Backend
 
