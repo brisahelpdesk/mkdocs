@@ -18,6 +18,31 @@ Este documento detalha os motivos que justificam a escolha das principais tecnol
 
 ---
 
+### :electric_plug: WebSockets no Frontend - `socket.io-client`
+
+**Motivo da escolha:**
+
+- A funcionalidade de reatribuição de chamados, chat em tempo real e notificações exige comunicação **bi-direcional e instantânea** entre frontend e backend.
+- A biblioteca `socket.io-client` oferece:
+  - Conexão automática e reconexão com o servidor via WebSocket (ou fallback HTTP long polling).
+  - Integração direta com `@nestjs/websockets` no backend, simplificando a comunicação.
+  - Emissão e escuta de eventos com uma API simples baseada em `emit` e `on`.
+- Utilizando `socket.io-client`, o frontend Next.js poderá:
+  - Receber atualizações imediatas de chamados reatribuídos.
+  - Atualizar a interface de chat em tempo real.
+  - Exibir notificações sem precisar de polling.
+
+**Alternativas consideradas:**
+| Tecnologia        | Vantagens | Desvantagens |
+|-------------------|-----------|--------------|
+| WebSocket nativo  | Leve e direto | Mais trabalhoso (sem fallback, sem reconexão) |
+| SSE (EventSource) | Simples e leve | Apenas envio servidor → cliente |
+| Ably, Pusher, PubNub | Infra gerenciada, escalável | Dependência externa, possível custo |
+
+**Conclusão**: `socket.io-client` é a escolha ideal para a stack atual, equilibrando simplicidade, compatibilidade com NestJS e performance.
+
+---
+
 ## :gear: Backend - NestJS
 
 **Motivo da escolha:**
