@@ -2,7 +2,7 @@
 
 Este documento detalha os motivos que justificam a escolha das principais tecnologias utilizadas no projeto.
 
-## :jigsaw: Frontend - Next.js
+## Frontend - Next.js
 
 **Motivo da escolha:**
 
@@ -18,7 +18,7 @@ Este documento detalha os motivos que justificam a escolha das principais tecnol
 
 ---
 
-### :electric_plug: WebSockets no Frontend - `socket.io-client`
+### WebSockets no Frontend - `socket.io-client`
 
 **Motivo da escolha:**
 
@@ -43,7 +43,7 @@ Este documento detalha os motivos que justificam a escolha das principais tecnol
 
 ---
 
-## :gear: Backend - NestJS
+## Backend - NestJS
 
 **Motivo da escolha:**
 
@@ -55,22 +55,22 @@ Este documento detalha os motivos que justificam a escolha das principais tecnol
 
 ---
 
-### :brain: Análise com base na equipe e contexto
+### Análise com base na equipe e contexto
 
-#### :bust_in_silhouette: Desenvolvedor 1 (experiente com Java e Spring Boot)
+#### Desenvolvedor 1 (experiente com Java e Spring Boot)
 Acostumado com frameworks opinativos, com injeção de dependência, arquitetura modular, anotações, DTOs etc.
 
 - Vai se sentir mais em casa com o NestJS, que **se inspira diretamente no Spring**.
 - Anotações decoradoras (`@Controller`, `@Injectable`, etc.) são análogas às do Spring, favorecendo rápida adaptação.
 
-#### :bust_in_silhouette: Desenvolvedor 2 (menos experiente, mas gosta de banco de dados e teve contato com Express)
+#### Desenvolvedor 2 (menos experiente, mas gosta de banco de dados e teve contato com Express)
 Já teve contato com conceitos próximos aos do Fastify, mas pode se beneficiar de uma **estrutura mais sólida e opinativa**.
 
 - O NestJS fornece estrutura, padrões e boas práticas que facilitarão o aprendizado e a colaboração em equipe.
 
 ---
 
-### :mag: Análise técnica com base no escopo
+### Análise técnica com base no escopo
 
 O projeto exige:
 
@@ -81,11 +81,11 @@ O projeto exige:
 - Comentários internos e externos.
 - Dashboards, notificações e relatórios.
 
-:warning: Isso demanda **organização**, **modularidade**, **autenticação segura**, **validações estruturadas** e **boas práticas arquiteturais**.
+Isso demanda **organização**, **modularidade**, **autenticação segura**, **validações estruturadas** e **boas práticas arquiteturais**.
 
 ---
 
-### :balance_scale: Comparativo objetivo: Fastify vs NestJS
+### Comparativo objetivo: Fastify vs NestJS
 
 | Critério                           | Fastify                      | NestJS                                                              |
 |------------------------------------|------------------------------|----------------------------------------------------------------------|
@@ -100,20 +100,20 @@ O projeto exige:
 
 ---
 
-### :white_check_mark: Recomendação clara para o caso do projeto: NestJS
+### Recomendação clara para o caso do projeto: NestJS
 
 **Por que NestJS é a melhor escolha para este projeto?**
 
-- :lock: **Menor risco técnico:** ajuda a evitar erros comuns de arquitetura, especialmente com desenvolvedores menos experientes.
-- :mortar_board: **Facilidade de adaptação para devs vindos do Spring Boot:** muitos conceitos são parecidos.
-- :triangular_ruler: **Menos tempo com decisões estruturais:** foco no desenvolvimento funcional, não em definir arquitetura.
-- :electric_plug: **Recursos integrados:** WebSocket, autenticação JWT, Swagger, ORM, validações, middlewares.
-- :books: **Documentação e tutoriais ricos:** excelente base para aprendizado e implementação eficiente.
-- :wrench: **Manutenção facilitada a longo prazo**, com boa separação de responsabilidades.
+- **Menor risco técnico:** ajuda a evitar erros comuns de arquitetura, especialmente com desenvolvedores menos experientes.
+- **Facilidade de adaptação para devs vindos do Spring Boot:** muitos conceitos são parecidos.
+- **Menos tempo com decisões estruturais:** foco no desenvolvimento funcional, não em definir arquitetura.
+- **Recursos integrados:** WebSocket, autenticação JWT, Swagger, ORM, validações, middlewares.
+- **Documentação e tutoriais ricos:** excelente base para aprendizado e implementação eficiente.
+- **Manutenção facilitada a longo prazo**, com boa separação de responsabilidades.
 
 ---
 
-## :floppy_disk: Banco de Dados - PostgreSQL
+## Banco de Dados - PostgreSQL
 
 **Motivo da escolha:**
 
@@ -127,7 +127,7 @@ O projeto exige:
 
 ---
 
-## :question: Perguntas Levadas em Consideração Durante a Escolha da Stack
+## Perguntas Levadas em Consideração Durante a Escolha da Stack
 
 Durante o processo de seleção das tecnologias para o Sistema de Suporte a Chamados, a equipe considerou uma série de perguntas fundamentais para garantir a escolha mais estratégica, eficiente e viável. São elas:
 
@@ -153,7 +153,7 @@ Essas perguntas guiaram a escolha da stack com o objetivo de garantir não só a
 
 ---
 
-## :white_check_mark: Conclusão
+## Conclusão
 
 A combinação **Next.js + NestJS + PostgreSQL** foi escolhida por:
 

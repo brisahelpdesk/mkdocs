@@ -2,9 +2,9 @@
 
 Este documento descreve a stack de tecnologias adotada para o desenvolvimento do Sistema de Suporte a Chamados, conforme os requisitos levantados.
 
-## :package: Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
-### :jigsaw: Frontend
+### Frontend
 
 - **Framework:** [Next.js](https://nextjs.org/)
 - **Linguagem:** TypeScript
@@ -15,7 +15,7 @@ Este documento descreve a stack de tecnologias adotada para o desenvolvimento do
 - **Gerenciamento de formulários:** React Hook Form
 - **WebSockets:** [socket.io-client](https://www.npmjs.com/package/socket.io-client) (para chat, notificações e reatribuição de chamados)
 
-### :gear: Backend
+### Backend
 
 - **Framework:** [NestJS](https://nestjs.com/)
 - **Linguagem:** TypeScript
@@ -26,27 +26,27 @@ Este documento descreve a stack de tecnologias adotada para o desenvolvimento do
 - **Exportação de arquivos:** PDFKit (ou Puppeteer)
 - **Emails:** [Nodemailer](https://nodemailer.com/) e [Ethereal Email](https://ethereal.email/)
 
-### :floppy_disk: Banco de Dados
+### Banco de Dados
 
 - **Banco:** PostgreSQL
 - **ORM:** Prisma
 
-### :lock: Autenticação e Autorização
+### Autenticação e Autorização
 
 - JWT (JSON Web Token)
 - 2FA (Two-Factor Authentication)
 - Controle de acesso por perfil (Admin, Gerente, Atendente, Cliente)
 
-### :paperclip: Armazenamento de Arquivos
+### Armazenamento de Arquivos
 
 - AWS S3 ou Firebase Storage (para arquivos de até 20MB por anexo)
 
-### :test_tube: Testes
+### Testes
 
 - Backend: Jest + Supertest
 - Frontend: Vitest (testes de unidade e integração)
 
-### :rocket: DevOps e Infraestrutura
+### DevOps e Infraestrutura
 
 - **Containers:** Docker
 - **CI/CD:** GitHub Actions
@@ -55,6 +55,6 @@ Este documento descreve a stack de tecnologias adotada para o desenvolvimento do
 
 ---
 
-## :scroll: Considerações
+## Considerações
 
 A stack escolhida visa atender os requisitos de desempenho, segurança, escalabilidade, rastreabilidade, integração via APIs, responsividade e manutenção a longo prazo.
