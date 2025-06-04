@@ -8,6 +8,7 @@ Este documento descreve a stack de tecnologias adotada para o desenvolvimento do
 
 - **Framework:** [Next.js](https://nextjs.org/)
 - **Linguagem:** TypeScript
+- **Versão do Node.js:** 22.16.0 (LTS)
 - **Estilização:** Tailwind CSS
 - **Biblioteca de UI:** [shadcn/ui](https://ui.shadcn.com/)
 - **Gerenciamento de Estado:** Zustand (ou Redux Toolkit, conforme necessidade)
@@ -20,6 +21,7 @@ Este documento descreve a stack de tecnologias adotada para o desenvolvimento do
 
 - **Framework:** [NestJS](https://nestjs.com/)
 - **Linguagem:** TypeScript
+- **Versão do Node.js:** 22.16.0 (LTS)
 - **API:** RESTful com suporte à autenticação JWT + 2FA
 - **Validação:** Class-validator / class-transformer
 - **Segurança:** Helmet, bcrypt, CORS, Rate Limiting
