@@ -32,7 +32,7 @@ Este documento descreve a stack de tecnologias adotada para o desenvolvimento do
 
 ### Banco de Dados
 
-- **Banco:** PostgreSQL
+- **Banco:** PostgreSQL (versão 16.9)
 - **ORM:** Prisma
 
 ### Autenticação e Autorização
