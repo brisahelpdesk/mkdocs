@@ -2,3 +2,10 @@ site_name: BRISA Helpdesk
 
 theme:
   name: material
+  logo: images/logo-2.png
+  favicon: images/logo-2.png
+
+nav: 
+  - Início: index.md
+  - Termo de abetura: initiation/project-charter.md
+  - Documento de ferramentas: planning/tech-stack.md
