@@ -7,6 +7,7 @@
 | 30/05/2025 | 0.1    | Criação do documento       | [Maelton Lima dos Santos](https://github.com/Maelton)    |
 | 05/06/2025 | 1.0    | Adiciona tecnologias do projeto | [Maelton Lima dos Santos](https://github.com/Maelton) |
 | 05/06/2025 | 2.0    | Aprimora descrição do documento | [Maelton Lima dos Santos](https://github.com/Maelton) |
+| 06/06/2025 | 2.1    | Adiciona ferramentas de documentação | [Maelton Lima dos Santos](https://github.com/Maelton) |
 
 ## Descrição
 
@@ -66,6 +67,13 @@ Este documento descreve o conjunto de tecnologias adotadas para o desenvolviment
 - **CI/CD:** GitHub Actions
 - **Monitoramento:** UptimeRobot, LogRocket (frontend), Prometheus (backend)
 - **Deploy:** Netlify, Render, Railway, DigitalOcean ou AWS EC2
+
+### Documentação
+
+- **Plataforma de publicação:** [GitHub Pages](https://pages.github.com/)
+- **Gerador de documentação:** [MkDocs](https://www.mkdocs.org/)
+- **Tema recomendado:** [`mkdocs-material`](https://squidfunk.github.io/mkdocs-material/)
+- **Objetivo:** Disponibilizar a documentação do projeto de forma versionada, acessível e responsiva, com renderização otimizada para Markdown.
 
 ---
 
