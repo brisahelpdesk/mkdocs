@@ -5,6 +5,7 @@
 | Data       | Versão | Descrição                  | Responsáveis               |
 |------------|--------|----------------------------|----------------------------|
 | 06/05/2025 | 0.1    | Criação do documento       | [Maelton Lima dos Santos](https://github.com/Maelton)    |
+| 06/05/2025 | 0.2    | Descreve requisitos        | [Maelton Lima dos Santos](https://github.com/Maelton)    |
 
 ---
 
@@ -20,7 +21,22 @@
 
 ---
 
-## 3. Requisitos (Histórias de Usuário)
+## 3. Histórias de Usuário (Requisitos Funcionais)
+
+### 3.1 Overview das Histórias de Usuário (Ordenadas por Execução)
+
+| ID     | Título                                        | Descrição                                                                                      | Dependência       |
+|--------|-----------------------------------------------|------------------------------------------------------------------------------------------------|-------------------|
+| US001  | Abertura de chamado técnico                   | Permitir que o solicitante crie chamados com anexos e tipo definido.                          | RT001             |
+| US003  | Consulta de status do chamado                 | Exibir o andamento, histórico e anexos de um chamado.                                         | US001             |
+| US002  | Atribuição automática de chamado              | Distribuir chamados automaticamente para técnicos com menor carga.                            | US001             |
+| US004  | Sugestão automática da base de conhecimento   | Sugerir artigos da base ao abrir chamado conforme palavras-chave.                             | US001, RT004      |
+| US006  | Controle de tempo por atendimento             | Permitir que o técnico registre o tempo gasto em cada atendimento.                            | US002             |
+| US005  | Registro de autoatendimento como chamado      | Gerar automaticamente um chamado ao consultar artigo da base de conhecimento.                 | US004             |
+
+---
+
+### 3.2 Histórias de Usuário Detalhadas (Ordenados por ID)
 
 ### ID: US001  
 **Título:** Abertura de chamado técnico  
@@ -32,7 +48,8 @@ Como solicitante, quero abrir um chamado descrevendo meu problema, para receber 
 - Deve permitir adicionar anexos (.pdf, .docx, .jpg, etc.)  
 - Deve notificar o solicitante e o técnico automaticamente após a abertura  
 **Prioridade:** Alta  
-**Dificuldade:** Média
+**Dificuldade:** Média  
+**Dependência:** RT001  
 
 ---
 
@@ -46,7 +63,8 @@ Como sistema, quero atribuir chamados automaticamente ao técnico com menor carg
 - Em caso de empate, deve atribuir de forma aleatória  
 - Supervisores podem reatribuir manualmente  
 **Prioridade:** Alta  
-**Dificuldade:** Alta 
+**Dificuldade:** Alta  
+**Dependência:** US001  
 
 ---
 
@@ -60,7 +78,8 @@ Como solicitante, quero consultar o status do meu chamado, para acompanhar seu p
 - Deve mostrar histórico de interações  
 - Deve permitir visualização de anexos trocados  
 **Prioridade:** Alta  
-**Dificuldade:** Baixa
+**Dificuldade:** Baixa  
+**Dependência:** US001  
 
 ---
 
@@ -74,21 +93,8 @@ Como solicitante, quero receber sugestões de artigos ao abrir um chamado, para 
 - Artigos ordenados por relevância e avaliação de utilidade  
 - Permite avaliar se o artigo ajudou  
 **Prioridade:** Alta  
-**Dificuldade:** Alta
-
----
-
-### ID: US006  
-**Título:** Controle de tempo por atendimento  
-**Persona:** ATD  
-**História:**  
-Como técnico, quero iniciar, pausar e finalizar um cronômetro durante o atendimento, para registrar o tempo gasto.  
-**Critérios de Aceitação:**  
-- Deve exibir tempo por interação e tempo total do chamado  
-- Deve permitir retomar o cronômetro  
-- Deve exportar dados para relatórios  
-**Prioridade:** Alta  
-**Dificuldade:** Alta
+**Dificuldade:** Alta  
+**Dependência:** US001, RT004  
 
 ---
 
@@ -102,11 +108,29 @@ Como sistema, quero registrar acessos à base de conhecimento como chamados do t
 - Se resolvido, marcado como "Resolvido – Autoatendimento"  
 - Se não resolvido, pode ser convertido em chamado técnico  
 **Prioridade:** Média  
-**Dificuldade:** Média   
+**Dificuldade:** Média  
+**Dependência:** US004  
 
 ---
 
-## 4. Requisitos Técnicos
+### ID: US006  
+**Título:** Controle de tempo por atendimento  
+**Persona:** ATD  
+**História:**  
+Como técnico, quero iniciar, pausar e finalizar um cronômetro durante o atendimento, para registrar o tempo gasto.  
+**Critérios de Aceitação:**  
+- Deve exibir tempo por interação e tempo total do chamado  
+- Deve permitir retomar o cronômetro  
+- Deve exportar dados para relatórios  
+**Prioridade:** Alta  
+**Dificuldade:** Alta  
+**Dependência:** US002  
+
+---
+
+## 4. Requisitos Técnicos (Requisitos Não-Funcionais)
+
+### 4.1 Overview dos Requisitos Técnicos (Ordenados por Execução)
 
 | ID     | Descrição                                             | Prioridade | Dependência | Dificuldade |
 |--------|--------------------------------------------------------|------------|-------------|-------------|
@@ -119,7 +143,69 @@ Como sistema, quero registrar acessos à base de conhecimento como chamados do t
 
 ---
 
-## 5. Backlog do Produto
+### 4.2 Requisitos Técnicos Detalhados (Ordenados por ID)
+
+#### ID: RT001  
+**Título:** Autenticação com 2FA  
+**Descrição:**  
+Implementar autenticação por email e senha com verificação em dois fatores (2FA) para garantir segurança no acesso ao sistema.  
+**Prioridade:** Alta  
+**Dificuldade:** Alta  
+**Dependência:** -  
+
+---
+
+#### ID: RT002  
+**Título:** Backup automático  
+**Descrição:**  
+Executar rotinas de backup diariamente com retenção mínima de 30 dias para prevenção de perdas.  
+**Prioridade:** Média  
+**Dificuldade:** Baixa  
+**Dependência:** -  
+
+---
+
+#### ID: RT003  
+**Título:** Logs de auditoria de ações críticas  
+**Descrição:**  
+Registrar atividades relevantes no sistema para rastreabilidade e segurança, como logins, alterações e exclusões.  
+**Prioridade:** Alta  
+**Dificuldade:** Média  
+**Dependência:** RT001  
+
+---
+
+#### ID: RT004  
+**Título:** Integração via API REST  
+**Descrição:**  
+Disponibilizar e consumir APIs RESTful para integração com sistemas externos (ex: ERP, CRM).  
+**Prioridade:** Alta  
+**Dificuldade:** Alta  
+**Dependência:** RT001  
+
+---
+
+#### ID: RT005  
+**Título:** Compatibilidade com navegadores modernos  
+**Descrição:**  
+O sistema deve funcionar de forma consistente nos principais navegadores (Chrome, Firefox, Edge e Safari).  
+**Prioridade:** Alta  
+**Dificuldade:** Baixa  
+**Dependência:** -  
+
+---
+
+#### ID: RT006  
+**Título:** Exportação de relatórios em PDF e Excel  
+**Descrição:**  
+Gerar relatórios customizáveis e exportá-los em PDF e/ou Excel para análise externa.  
+**Prioridade:** Alta  
+**Dificuldade:** Média  
+**Dependência:** US006  
+
+---
+
+## 5. Backlog do Produto (Ordenado por Execução)
 
 | ID     | Título                                         | Tipo       | Prioridade | Dependência   | Dificuldade |
 |--------|------------------------------------------------|------------|------------|----------------|-------------|
