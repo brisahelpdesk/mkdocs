@@ -1,6 +1,16 @@
-# Justificativa da Stack Tecnológica - Sistema de Suporte a Chamados
+# Justificativa de Uso da Stack Tecnológica do Projeto
 
-Este documento detalha os motivos que justificam a escolha das principais tecnologias utilizadas no projeto.
+## Versões
+
+| Data       | Versão | Descrição                  | Responsáveis               |
+|------------|--------|----------------------------|----------------------------|
+| 30/05/2025 | 0.1    | Criação do documento       | [Maelton Lima dos Santos](https://github.com/Maelton)    |
+| 03/06/2025 | 1.0    | Adiciona justificativas de uso | [Maelton Lima dos Santos](https://github.com/Maelton) |
+| 05/06/2025 | 2.0    | Aprimora descrição do documento | [Maelton Lima dos Santos](https://github.com/Maelton) |
+
+## Descrição
+
+Este documento detalha os motivos que justificam a escolha das principais tecnologias utilizadas no projeto de desenvolvimento do sistema **BRISA Helpdesk**.
 
 ## Frontend - Next.js
 

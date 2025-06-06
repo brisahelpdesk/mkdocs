@@ -1,6 +1,16 @@
-# Stack de Desenvolvimento - Sistema de Suporte a Chamados
+# Stack Tecnológica do Projeto
 
-Este documento descreve a stack de tecnologias adotada para o desenvolvimento do Sistema de Suporte a Chamados, conforme os requisitos levantados.
+## Versões
+
+| Data       | Versão | Descrição                  | Responsáveis               |
+|------------|--------|----------------------------|----------------------------|
+| 30/05/2025 | 0.1    | Criação do documento       | [Maelton Lima dos Santos](https://github.com/Maelton)    |
+| 05/06/2025 | 1.0    | Adiciona tecnologias do projeto | [Maelton Lima dos Santos](https://github.com/Maelton) |
+| 05/06/2025 | 2.0    | Aprimora descrição do documento | [Maelton Lima dos Santos](https://github.com/Maelton) |
+
+## Descrição
+
+Este documento descreve o conjunto de tecnologias adotadas para o desenvolvimento do sistema **BRISA Helpdesk**.
 
 ## Tecnologias Utilizadas
 
