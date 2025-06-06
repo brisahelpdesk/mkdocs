@@ -38,7 +38,7 @@
 
 ### 3.2 Histórias de Usuário Detalhadas (Ordenados por ID)
 
-### ID: US001  
+#### ID: US001  
 **Título:** Abertura de chamado técnico  
 **Persona:** CLI  
 **História:**  
@@ -53,7 +53,7 @@ Como solicitante, quero abrir um chamado descrevendo meu problema, para receber 
 
 ---
 
-### ID: US002  
+#### ID: US002  
 **Título:** Atribuição automática de chamado  
 **Persona:** SUP  
 **História:**  
@@ -68,7 +68,7 @@ Como sistema, quero atribuir chamados automaticamente ao técnico com menor carg
 
 ---
 
-### ID: US003  
+#### ID: US003  
 **Título:** Consulta de status do chamado  
 **Persona:** CLI  
 **História:**  
@@ -83,7 +83,7 @@ Como solicitante, quero consultar o status do meu chamado, para acompanhar seu p
 
 ---
 
-### ID: US004  
+#### ID: US004  
 **Título:** Sugestão automática da base de conhecimento  
 **Persona:** CLI  
 **História:**  
@@ -98,7 +98,7 @@ Como solicitante, quero receber sugestões de artigos ao abrir um chamado, para 
 
 ---
 
-### ID: US005  
+#### ID: US005  
 **Título:** Registro de autoatendimento como chamado  
 **Persona:** CLI  
 **História:**  
@@ -113,7 +113,7 @@ Como sistema, quero registrar acessos à base de conhecimento como chamados do t
 
 ---
 
-### ID: US006  
+#### ID: US006  
 **Título:** Controle de tempo por atendimento  
 **Persona:** ATD  
 **História:**  
