@@ -7,5 +7,8 @@ theme:
 
 nav: 
   - Início: index.md
-  - Termo de abetura: initiation/project-charter.md
-  - Documento de ferramentas: planning/tech-stack.md
+  - Iniciação:
+    - Documento de abetura: initiation/project-charter.md
+  - Planejamento:
+    - Documento de ferramentas: planning/tech-stack.md
+    - Documento de requisitos: planning/requirements-agile-catalog.md
