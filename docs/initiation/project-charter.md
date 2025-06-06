@@ -1,6 +1,6 @@
-# TAP - BRISA Helpdesk
+# Termo de Abertura do Projeto (TAP)
 
-## Termo de Abertura do Projeto (TAP)
+## BRISA Helpdesk
 
 ### 1. Versões
 
