@@ -12,3 +12,4 @@ nav:
   - Planejamento:
     - Documento de ferramentas: planning/tech-stack.md
     - Documento de requisitos: planning/requirements-agile-catalog.md
+    - Documento de arquitetura: planning/system-architecture/system-architecture.md

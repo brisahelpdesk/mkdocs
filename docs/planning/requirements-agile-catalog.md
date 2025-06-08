@@ -1,4 +1,4 @@
-# Catálogo de Requisitos Ágeis – Projeto BRISA Helpdesk  
+# Catálogo de Requisitos Ágeis 
 
 ## 1. Versões
 
