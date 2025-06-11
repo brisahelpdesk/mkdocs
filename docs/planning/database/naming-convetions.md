@@ -23,7 +23,7 @@
 | `ui`    | Índice Único             | `ui_tb_usuario_email`              |
 | `sq`    | Sequence                 | `sq_tb_usuario_id`                 |
 | `vw`    | View                     | `vw_usuario_ativo`                 |
-| `mv`    | Materialized View        | `mv_relatorio_vendas`             |
+| `mv`    | Materialized View        | `mv_relatorio_vendas`              |
 | `fn`    | Função Escalar           | `fn_calcula_desconto`              |
 | `sp`    | Stored Procedure         | `sp_cria_usuario`                  |
 | `tr`    | Trigger                  | `tr_tb_usuario_audit`              |
@@ -40,6 +40,7 @@
 | **Foreign Key**        | `fk_`   | `fk_{tabela_origem}_{tabela_referenciada}_{coluna}`     | `fk_tb_endereco_tb_usuario_usuario_id`   |
 | **Unique Key**         | `uk_`   | `uk_{tabela}_{coluna}`                                  | `uk_tb_usuario_email`                    |
 | **Check Constraint**   | `ck_`   | `ck_{tabela}_{coluna}`                                  | `ck_tb_usuario_status`                   |
+| **Not Null Constraint** | `nn`   | `nn_{tabela}_{coluna}`                                    | `nn_tb_usuario_email`             |
 | **Índice (não único)** | `ix_`   | `ix_{tabela}_{coluna}`                                  | `ix_tb_usuario_nome`                     |
 | **Índice Único**       | `ui_`   | `ui_{tabela}_{coluna}`                                  | `ui_tb_usuario_email`                    |
 | **Trigger**            | `tr_`   | `tr_{tabela}_{acao}`                                    | `tr_tb_usuario_audit_insert`             |

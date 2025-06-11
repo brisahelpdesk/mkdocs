@@ -5,7 +5,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 -->
 <dbmodel pgmodeler-ver="1.2.0" use-changelog="false" author="Maelton Lima dos Santos" max-obj-count="4"
 	 gen-disabled-objs-code="false" show-sys-schemas-rects="true"
-	 last-position="0,38" last-zoom="0.9" scene-rect="0,0,1570.8,1076.8"
+	 last-position="0,0" last-zoom="0.9" scene-rect="0,0,1570.8,1076.8"
 	 default-schema="sch_brisa_helpdesk" default-owner="dba"
 	 layers="Default layer"
 	 active-layers="0"
@@ -32,13 +32,40 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="tb_user" layers="0" gen-alter-cmds="true" collapse-mode="2" max-obj-count="0" z-value="0">
 	<schema name="sch_brisa_helpdesk"/>
 	<role name="dba"/>
-	<position x="220" y="177.778"/>
+	<position x="614.444" y="204.444"/>
 </table>
 
 <table name="tb_role" layers="0" gen-alter-cmds="true" collapse-mode="2" max-obj-count="0" z-value="0">
 	<schema name="sch_brisa_helpdesk"/>
 	<role name="dba"/>
-	<position x="224.444" y="321.111"/>
+	<position x="621.111" y="346.667"/>
 </table>
+
+<table name="tb_permission" layers="0" gen-alter-cmds="true" collapse-mode="2" max-obj-count="0" z-value="0">
+	<schema name="sch_brisa_helpdesk"/>
+	<role name="dba"/>
+	<position x="594.444" y="484.444"/>
+</table>
+
+<textbox name="tb_role_has_permission" layers="0" z-value="0" width="40" font-size="9">
+	<position x="692.222" y="420"/>
+	<comment> <![CDATA[N to N]]> </comment>
+</textbox>
+
+<textbox name="tb_user_has_role" layers="0" z-value="0" width="40" font-size="9">
+	<position x="700" y="277.777"/>
+	<comment> <![CDATA[N to N]]> </comment>
+</textbox>
+
+<table name="tb_address" layers="0" gen-alter-cmds="true" collapse-mode="2" max-obj-count="0" z-value="0">
+	<schema name="sch_brisa_helpdesk"/>
+	<role name="dba"/>
+	<position x="260" y="206.667"/>
+</table>
+
+<textbox name="tb_user_has_address" layers="0" z-value="0" width="40" font-size="9">
+	<position x="518.889" y="209.999"/>
+	<comment> <![CDATA[1 to N]]> </comment>
+</textbox>
 
 </dbmodel>
