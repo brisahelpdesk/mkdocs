@@ -5,6 +5,13 @@ theme:
   logo: images/logo-2.png
   favicon: images/logo-2.png
 
+markdown_extensions:
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
 nav: 
   - Início: index.md
   - Iniciação:
@@ -13,3 +20,5 @@ nav:
     - Documento de ferramentas: planning/tech-stack.md
     - Documento de requisitos: planning/requirements-agile-catalog.md
     - Documento de arquitetura: planning/system-architecture/system-architecture.md
+    - Documentos de processos:
+      - Processo de criação de cliente: planning/system-processes/create-new-client.md
