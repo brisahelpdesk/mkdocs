@@ -37,3 +37,7 @@ erDiagram
 
     JOB_POSITION ||--o{ EMPLOYEE : "has many"
 ```
+
+# Observações
+
+1. Verificar necessidade de implementação de restrição para evitar loops infinitos de supervisão, por exemplo, "João é supervisor de si mesmo".
