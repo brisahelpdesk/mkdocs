@@ -1,17 +1,17 @@
-name: helpdesk
+name: BRISA Helpdesk
 
 services:
   database:
     image: postgres:16.9
-    container_name: helpdesk-database
+    container_name: brisa-helpdesk-database
     restart: unless-stopped
     ports: 
     - "5432:5432"
     environment:
-      - POSTGRES_PASSWORD=admin
-      - POSTGRES_DB=helpdesk
+      - POSTGRES_DB=brisa-helpdesk
       - POSTGRES_USER=dba
+      - POSTGRES_PASSWORD=dba
 
 volumes:
   database:
-    name: helpdesk-database
+    name: brisa-helpdesk-database
