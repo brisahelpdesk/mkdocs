@@ -7,6 +7,10 @@ erDiagram
     USER ||--o{ CLIENT_USER : "is a"
     USER ||--o{ EMPLOYEE : "is a"
     USER ||--o{ USER_ROLE : "has roles"
+    USER ||--o{ USER_OAUTH_PROVIDER: "has many"
+    USER }o--o| SECURITY_QUESTION: "has one" 
+
+    OAUTH_PROVIDER ||--o{ USER_OAUTH_PROVIDER: "assigned to"
 
     CLIENT ||--|| INDIVIDUAL_CLIENT : "specializes to"
     CLIENT ||--|| CORPORATE_CLIENT : "specializes to"
