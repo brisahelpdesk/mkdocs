@@ -9,6 +9,8 @@
 | 30/06/2025 | 0.3    | Adiciona gerenciamento de autenticacao | [Maelton Lima dos Santos](https://github.com/Maelton) |
 | 30/06/2025 | 0.4    | Adiciona gerenciamento de produtos | [Maelton Lima dos Santos](https://github.com/Maelton) |
 | 30/06/2025 | 0.5    | Adiciona gerenciamento de clientes | [Maelton Lima dos Santos](https://github.com/Maelton) |
+| 01/07/2025 | 0.6    | Adiciona gerenciamento de colaboradores | [Maelton Lima dos Santos](https://github.com/Maelton) |
+| 02/07/2025 | 0.7    | Adiciona gerenciamento de contratos | [Maelton Lima dos Santos](https://github.com/Maelton) |
 
 ## Descrição
 
@@ -28,15 +30,14 @@ Este documento será atualizado conforme novas entidades forem sendo adicionadas
 
 ```mermaid
 erDiagram
-    User ||--o{ SecurityQuestion : responde
-    User }o--o{ Role : possui
-    Role }o--o{ Privilege : concede
-    User ||--o{ UserOAuthProvider : autentica_via
-    OAuthProvider ||--o{ UserOAuthProvider : provê
-    User ||--o| Client : especializa
-    User ||--o| ClientUser : especializa
-    User ||--o| Employee : especializa
-    Client ||--o{ ClientUser : associa
+    Usuario }o--o| Pergunta_Seguranca : pode_ter
+    Usuario }o--o{ Papel_no_Sitema : tem
+    Papel_no_Sitema }o--o{ Privilegio_de_Uso : tem
+    Usuario }o--o{ Servidor_oAuth : pode_autenticar_via
+    Usuario ||--o| Cliente : especializa
+    Usuario ||--o| Usuario_de_Cliente : especializa
+    Usuario ||--o| Colaborador : especializa
+    Cliente ||--o{ Usuario_de_Cliente : pode_ter
 ```
 
 #### 1.2 Descrição
@@ -69,11 +70,11 @@ As principais entidades incluem:
 
 ```mermaid
 erDiagram
-    CatalogItemType ||--o{ CatalogItem : classifica
-    CatalogItem ||--o| Product : especializa
-    CatalogItem ||--o| Service : especializa
-    CatalogItem }o--o{ Contract : associado_a
-    CatalogItem }o--o{ SLA : associado_a
+    Item_de_Catalogo }o--|| Tipo : tem
+    Item_de_Catalogo ||--o| Produto : especializa
+    Item_de_Catalogo ||--o| Servico : especializa
+    Item_de_Catalogo }o--o{ Contrato : pode_estar_associado_a
+    Item_de_Catalogo }o--o{ SLA : pode_estar_associado_a
 ```
 
 #### 2.2 Descrição
@@ -101,19 +102,18 @@ As principais entidades incluem:
 
 ```mermaid
 erDiagram
-    ClientType ||--o{ Client : classifica
-    ClientStatus ||--o{ Client : define
-    Address ||--o{ Client : localiza
-    Phone ||--o{ Client : contata
-    User ||--o| Client : especializa
-    Client ||--o| IndividualClient : especializa
-    Client ||--o| CorporateClient : especializa
-    Client ||--o{ ClientUser : associa
-    User ||--o| ClientUser : especializa
-    BusinessSector }o--o{ Client : associado_a
-    BusinessSegment }o--o{ Client : associado_a
-    CompanyCategory ||--o{ CorporateClient : classifica
-    User ||--o{ Phone : possui
+    Cliente }o--|| Tipo : tem
+    Cliente }o--|| Status : tem
+    Cliente }o--|| Endereco : tem
+    Cliente }o--|| Telefone : tem
+    Usuario ||--o| Cliente : especializa
+    Cliente ||--o| Cliente_CPF : especializa
+    Cliente ||--o| Cliente_CNPJ : especializa
+    Cliente ||--o{ Usuario_de_Cliente : associa
+    Usuario ||--o| Usuario_de_Cliente : especializa
+    Cliente }o--o{ Setor_de_Mercado : associado_a
+    Cliente }o--o{ Segmento_de_Mercado : associado_a
+    Cliente_CNPJ }o--|| CompanyCategory : tem
 ```
 
 #### 3.2 Descrição
@@ -143,20 +143,87 @@ As principais entidades incluem:
 ### 4 Gerenciamento de Colaboradores
 
 #### 4.1 Modelo Conceitual
+
+```mermaid
+erDiagram
+    Usuario ||--o| Colaborador : especializa
+    Colaborador }o--o| Telefone : pode_ter
+    Colaborador }o--o| Endereco : pode_ter
+    Colaborador }o--|| Cargo : ocupa
+    Colaborador }o--|| Status : tem
+    Colaborador }o--o| Departamento : pode_ter
+    Colaborador }o--o| Branch : pode_ter
+    Colaborador }o--o{ Horario_de_Trabalho : associado_a
+    Cargo }o--o{ JobSpecialization : pode_ter
+    Colaborador |o--o{ Colaborador : pode_supervisionar
+    Branch }o--|| Endereco : tem
+```
+
 #### 4.2 Descrição
+
+O módulo de Gerenciamento de Colaboradores é responsável por gerenciar as informações dos funcionários (employees) do sistema BRISA Helpdesk. Ele inclui detalhes sobre cargos, especializações, departamentos, filiais, status dos funcionários, horários de trabalho e informações de contato, como endereços e telefones. 
+
+Este módulo permite o rastreamento de hierarquias (supervisores), alocação de cargos e especializações, associação a departamentos e filiais, bem como a definição de horários de trabalho semanais, garantindo uma gestão eficiente dos recursos humanos da organização.
+
+As principais entidades incluem:
+
+- **Employee (tb_employee)**: Tabela base para funcionários, vinculada a um usuário (tb_user) e associada a cargos, departamentos, filiais, status e informações de contato.
+- **JobPosition (tb_job_position)**: Define os cargos disponíveis na organização (e.g., "Técnico de Suporte", "Gerente").
+- **JobSpecialization (tb_job_specialization)**: Define especializações que podem ser associadas a cargos (e.g., "Redes", "Segurança").
+- **Department (tb_department)**: Representa departamentos dentro da organização (e.g., "TI", "RH").
+- **Branch (tb_branch)**: Representa filiais da empresa, cada uma associada a um endereço.
+- **EmployeeStatus (tb_employee_status)**: Define os status possíveis para funcionários (e.g., "Ativo", "Demitido").
+- **WorkSchedule (tb_work_schedule)**: Define horários de trabalho semanais (e.g., dias da semana e horários).
+- **User (tb_user)**: Entidade de autenticação que Employee especializa, contendo credenciais de login.
+- **Address (tb_address)**: Armazena endereços físicos associados a funcionários e filiais.
+- **Phone (tb_phone)**: Armazena números de telefone associados aos funcionários.
+
 #### 4.3 Modelo Relacional
 
-### Gerenciamento de Contratos
+[![](./images/employees-module.svg)](./images/employees-module.svg)
 
-#### Modelo Conceitual
-#### Descrição
-#### Modelo Relacional
+### 5 Gerenciamento de Contratos
 
-### Gerenciamento de SLAs
+#### 5.1 Modelo Conceitual
 
-#### Modelo Conceitual
-#### Descrição
-#### Modelo Relacional
+```mermaid
+erDiagram
+    Contrato }o--|| Status : tem
+    Contrato }o--|| Tipo : tem
+    Contrato }o--|| Cliente : tem
+    Contrato }o--o{ Produto_Servico : possui
+    Produto_Servico }o--o{ SLA : pode_ter
+    Contrato }o--o{ Usuario_de_Cliente : pode_estar_associado_a
+    Cliente ||--o{ Usuario_de_Cliente : pode_ter
+    Contrato }o--o{ SLA : pode_estar_associado_a
+```
+
+#### 5.2 Descrição
+
+O módulo de Gerenciamento de Contratos é responsável por gerenciar os contratos associados aos clientes no sistema BRISA Helpdesk. Ele permite a criação, rastreamento e categorização de contratos, vinculando-os a clientes, usuários relacionados aos clientes (ClientUsers), itens do catálogo (produtos ou serviços) e acordos de nível de serviço (SLAs). 
+
+Este módulo assegura a gestão eficiente das obrigações contratuais, incluindo status, tipos de contratos, associações com itens do catálogo e SLAs, além de permitir que usuários vinculados a clientes (ClientUsers) sejam associados a contratos para facilitar a gestão de interações.
+
+As principais entidades incluem:
+
+- **Contract (tb_contract)**: Tabela base para contratos, associada a um cliente, tipo de contrato, status, itens do catálogo, SLAs e usuários vinculados a clientes.
+- **ContractStatus (tb_contract_status)**: Define os status possíveis para contratos (e.g., "Ativo", "Cancelado").
+- **ContractType (tb_contract_type)**: Define os tipos de contratos (e.g., "Manutenção", "Suporte").
+- **Client (tb_client)**: Representa os clientes associados aos contratos.
+- **ClientUser (tb_client_user)**: Representa usuários vinculados a clientes, que podem ser associados a contratos para gerenciar interações específicas.
+- **CatalogItem (tb_catalog_item)**: Representa itens do catálogo (produtos ou serviços) vinculados aos contratos.
+- **SLA (tb_sla)**: Define acordos de nível de serviço, associados a itens do catálogo vinculados a contratos.
+- **ContractCatalogItem (tb_contract_catalog_item)**: Tabela de junção que associa contratos a itens do catálogo, permitindo múltiplos itens por contrato e múltiplos contratos por item.
+
+#### 5.3 Modelo Relacional
+
+[![](./images/contracts-module.svg)](./images/contracts-module.svg)
+
+### 6 Gerenciamento de SLAs
+
+#### 6.1 Modelo Conceitual
+#### 6.2 Descrição
+#### 6.3 Modelo Relacional
 
 ### Gerenciamento de Chamados
 
