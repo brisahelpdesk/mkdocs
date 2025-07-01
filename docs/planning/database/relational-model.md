@@ -7,7 +7,7 @@
 | 28/06/2025 | 0.1    | Criação do documento       | [Maelton Lima dos Santos](https://github.com/Maelton) |
 | 30/06/2025 | 0.2    | Adiciona estrutura do documento | [Maelton Lima dos Santos](https://github.com/Maelton) |
 | 30/06/2025 | 0.3    | Adiciona gerenciamento de autenticacao | [Maelton Lima dos Santos](https://github.com/Maelton) |
-| 30/06/2025 | 0.4    | - | [Maelton Lima dos Santos](https://github.com/Maelton) |
+| 30/06/2025 | 0.4    | Adiciona gerenciamento de produtos | [Maelton Lima dos Santos](https://github.com/Maelton) |
 
 ## Descrição
 
@@ -65,8 +65,34 @@ As principais entidades incluem:
 ### Gerenciamento de Produtos
 
 #### Modelo Conceitual
+
+```mermaid
+erDiagram
+    CatalogItemType ||--o{ CatalogItem : classifica
+    CatalogItem ||--o| Product : especializa
+    CatalogItem ||--o| Service : especializa
+    CatalogItem }o--o{ Contract : associado_a
+    CatalogItem }o--o{ SLA : associado_a
+```
+
 #### Descrição
+
+O módulo de Gerenciamento de Produtos é responsável por gerenciar os itens do catálogo do sistema BRISA Helpdesk, que incluem produtos e serviços oferecidos aos clientes. Ele organiza os itens do catálogo em tipos específicos e permite a especialização em produtos (físicos ou não) e serviços (físicos ou não). 
+
+Este módulo é essencial para associar itens do catálogo a contratos (por meio da tabela tb_contract_catalog_item) e a acordos de nível de serviço (SLAs, por meio da tabela tb_sla_catalog_item), garantindo que os serviços e produtos disponíveis sejam corretamente classificados, rastreados e vinculados às obrigações contratuais e de atendimento do sistema.
+
+As principais entidades incluem:
+
+- **CatalogItem (tb_catalog_item)**: Tabela base que armazena informações gerais sobre itens do catálogo, como produtos e serviços.
+- **CatalogItemType (tb_catalog_item_type)**: Define os tipos de classificação para itens do catálogo (e.g., "Hardware", "Software", "Suporte Técnico").
+- **Product (tb_product)**: Especialização de CatalogItem que representa produtos, com a distinção de serem físicos ou não.
+- **Service (tb_service)**: Especialização de CatalogItem que representa serviços, com a distinção de serem físicos ou não.
+- **Contract (tb_contract)**: Representa contratos associados a clientes, que podem incluir múltiplos itens do catálogo.
+- **SLA (tb_sla)**: Define acordos de nível de serviço, que podem estar associados a itens do catálogo para especificar tempos de resposta e resolução.
+
 #### Modelo Relacional
+
+[![](./images/products-module.svg)](./images/products-module.svg)
 
 ### Gerenciamento de Clientes
 
