@@ -10,7 +10,8 @@
 | 30/06/2025 | 0.4    | Adiciona gerenciamento de produtos | [Maelton Lima dos Santos](https://github.com/Maelton) |
 | 30/06/2025 | 0.5    | Adiciona gerenciamento de clientes | [Maelton Lima dos Santos](https://github.com/Maelton) |
 | 01/07/2025 | 0.6    | Adiciona gerenciamento de colaboradores | [Maelton Lima dos Santos](https://github.com/Maelton) |
-| 02/07/2025 | 0.7    | Adiciona gerenciamento de contratos | [Maelton Lima dos Santos](https://github.com/Maelton) |
+| 01/07/2025 | 0.7    | Adiciona gerenciamento de contratos | [Maelton Lima dos Santos](https://github.com/Maelton) |
+| 01/07/2025 | 0.8    | Adiciona gerenciamento de slas | [Maelton Lima dos Santos](https://github.com/Maelton) |
 
 ## Descrição
 
@@ -222,8 +223,39 @@ As principais entidades incluem:
 ### 6 Gerenciamento de SLAs
 
 #### 6.1 Modelo Conceitual
+
+```mermaid
+erDiagram
+    SLA }o--|| Status : tem
+    SLA }o--|| Tipo : tem
+    SLA }o--o{ Item_de_Catalogo : pode_estar_associada_a
+    SLA }o--o{ Contrato : pode_estar_associada_a
+    SLA }o--o{ Tipo_de_Chamado : pode_estar_associada_a
+    SLA ||--o{ Calendario : tem
+    Calendario }o--o{ Excecao : pode_ter
+```
+
 #### 6.2 Descrição
+
+O módulo de Gerenciamento de SLAs é responsável por gerenciar os Acordos de Nível de Serviço (SLAs) no sistema BRISA Helpdesk. Ele permite a criação, rastreamento e categorização de SLAs, que definem os tempos de resposta e resolução para serviços ou produtos associados a contratos, itens do catálogo ou tipos de chamados. 
+
+Os SLAs são vinculados a itens do catálogo (produtos ou serviços), contratos (indiretamente via itens do catálogo), e tipos de chamados para especificar os compromissos de atendimento. Cada SLA é associada a um calendário (tb_calendar) que define os períodos de operação, e esses calendários podem ter exceções (tb_calendar_exception) para feriados ou eventos específicos. 
+
+Este módulo assegura a gestão eficiente dos acordos de nível de serviço, incluindo status, prioridades (definidas na tabela tb_sla_priority), associações com itens do catálogo, contratos, tipos de chamados e calendários.
+
+As principais entidades incluem:
+
+- **SLA (tb_sla)**: Tabela base para acordos de nível de serviço, associada a um status, prioridade, itens do catálogo, tipos de chamados, contratos (via itens do catálogo) e calendário.
+- **SLAPriority (tb_sla_priority)**: Define as prioridades de SLAs (e.g., "Alta", "Baixa"), anteriormente referida como tipo de SLA.
+- **CatalogItem (tb_catalog_item)**: Representa itens do catálogo (produtos ou serviços) que pode ser associados aos SLAs.
+- **Contract (tb_contract)**: Representa contratos associados a SLAs indiretamente via itens do catálogo ou que podem ser associados aos SLAs.
+- **TicketType (tb_ticket_type)**: Define tipos de chamados (e.g., "Incidente", "Solicitação") que podem ser associados aos SLAs.
+- **Calendar (tb_calendar)**: Define os períodos operacionais dos SLAs (e.g., horários de trabalho).
+- **CalendarException (tb_calendar_exception)**: Define exceções nos calendários, como feriados ou eventos específicos.
+
 #### 6.3 Modelo Relacional
+
+[![](./images/sla-module.svg)](./images/sla-module.svg)
 
 ### Gerenciamento de Chamados
 
