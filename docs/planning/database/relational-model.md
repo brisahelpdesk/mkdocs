@@ -12,6 +12,12 @@
 | 01/07/2025 | 0.6    | Adiciona gerenciamento de colaboradores | [Maelton Lima dos Santos](https://github.com/Maelton) |
 | 01/07/2025 | 0.7    | Adiciona gerenciamento de contratos | [Maelton Lima dos Santos](https://github.com/Maelton) |
 | 01/07/2025 | 0.8    | Adiciona gerenciamento de slas | [Maelton Lima dos Santos](https://github.com/Maelton) |
+| 01/07/2025 | 0.9    | Adiciona gerenciamento de chamados | [Maelton Lima dos Santos](https://github.com/Maelton) |
+| 01/07/2025 | 0.10    | Adiciona gerenciamento de chat | [Maelton Lima dos Santos](https://github.com/Maelton) |
+| 01/07/2025 | 0.11    | Adiciona gerenciamento de faq | [Maelton Lima dos Santos](https://github.com/Maelton) |
+| 01/07/2025 | 0.12    | Adiciona gerenciamento de feedback | [Maelton Lima dos Santos](https://github.com/Maelton) |
+| 01/07/2025 | 0.13    | Adiciona gerenciamento de audit | [Maelton Lima dos Santos](https://github.com/Maelton) |
+| 01/07/2025 | 1.0    | Adiciona modelo relacional | [Maelton Lima dos Santos](https://github.com/Maelton) |
 
 ## Descrição
 
@@ -21,7 +27,7 @@ Este documento será atualizado conforme novas entidades forem sendo adicionadas
 
 ## Modelagem Completa
 
-<!-- IMAGEM DO MODELO RELACIONAL -->
+[![](./images/relational-model.svg)](./images/relational-model.svg)
 
 ## Principais Módulos da Aplicação
 
@@ -257,32 +263,139 @@ As principais entidades incluem:
 
 [![](./images/sla-module.svg)](./images/sla-module.svg)
 
-### Gerenciamento de Chamados
+### 7 Gerenciamento de Chamados
 
-#### Modelo Conceitual
-#### Descrição
-#### Modelo Relacional
+#### 7.1 Modelo Conceitual
 
-### Gerenciamento de Chats
+```mermaid
+erDiagram
+    Chamado }o--|| SLA : tem
+    Chamado }o--|| Contrato : tem
+    Chamado }o--|| Cliente_do_Contrato : tem
+    Chamado }o--|| Solicitante : tem
+    Chamado }o--|| Produto_Servico : tem
+    Chamado }o--|| Tipo : tem
+    Chamado ||--o{ Anexo : pode_ter
+    Chamado ||--o{ Sessao : pode_ter
 
-#### Modelo Conceitual
-#### Descrição
-#### Modelo Relacional
+    Sessao }o--|| Tipo : tem
+    Sessao }o--|| Status : tem
+    Sessao ||--o| Feedback : pode_ter
+    Sessao ||--o{ Atendimento : pode_ter
 
-### Gerenciamento de Base de Conhecimento
+    Atendimento }o--|| Agente : tem
+    Atendimento }o--|| Tipo_Atendimento : tem
+    Atendimento }o--|| Status : tem
+    Atendimento ||--o{ Chat : pode_ter
+    Atendimento ||--o{ FAQ : pode_ter
+```
 
-#### Modelo Conceitual
-#### Descrição
-#### Modelo Relacional
+#### 7.2 Descrição
 
-### Gerenciamento de Feedback
+O módulo de Gerenciamento de Chamados é responsável por gerenciar os chamados (tickets) no sistema BRISA Helpdesk. Ele permite a criação, rastreamento e resolução de chamados, associando-os a clientes, usuários vinculados a clientes (ClientUsers), funcionários, SLAs, itens do catálogo e anexos. Cada chamado pode ter múltiplas sessões (tb_session), que representam interações contínuas para resolução. 
 
-#### Modelo Conceitual
-#### Descrição
-#### Modelo Relacional
+Cada sessão pode ter um atendimento (tb_interaction), que é classificado por um tipo de interação (e.g., "Telefone", "E-mail"). Um atendimento pode, opcionalmente, estar associado a um chat (tb_chat), uma FAQ (tb_faq) ou ambos, mas também pode não ter nenhum dos dois. 
 
-### Gerenciamento de Auditoria
+Este módulo assegura a gestão eficiente dos chamados, incluindo status, tipos, associações com SLAs, itens do catálogo, sessões, atendimentos e anexos.
 
-#### Modelo Conceitual
-#### Descrição
-#### Modelo Relacional
+#### 7.3 Modelo Relacional
+
+[![](./images/ticketing-module.svg)](./images/ticketing-module.svg)
+As relações foram extramamente reduzidas, observe as foreign keys para ter maior precisão.
+
+### 8 Gerenciamento de Chats
+
+#### 8.1 Modelo Conceitual
+
+```mermaid
+erDiagram
+    Chat }o--|| Status : tem
+    Chat }o--|| Atendimento : tem
+    Chat ||--o{ Mensagem : pode_ter
+    Mensagem }o--|| Usuario : tem
+    Mensagem ||--o{ Anexo : pode_ter
+```
+
+#### 8.2 Descrição
+
+O módulo de Gerenciamento de Chats é responsável por gerenciar as conversas de chat no sistema BRISA Helpdesk, que ocorrem como parte de atendimentos (tb_ticket_handling) associados a chamados (tickets). Os chats são vinculados a interações específicas, que por sua vez estão relacionadas a sessões de chamados. 
+
+Este módulo assegura a gestão eficiente das conversas, permitindo o rastreamento de interações de suporte e a associação com os respectivos chamados e usuários.
+
+#### 8.3 Modelo Relacional
+
+[![](./images/chat-module.svg)](./images/chat-module.svg)
+
+### 9 Gerenciamento de Base de Conhecimento
+
+#### 9.1 Modelo Conceitual
+
+```mermaid
+erDiagram
+    FAQ }o--|| Artigo : tem
+    Artigo }o--o{ Categoria : pode_ter
+    Artigo }o--o{ Tag : pode_ter
+    
+```
+
+#### 9.2 Descrição
+
+O módulo de Gerenciamento de FAQ (Base de Conhecimento) é responsável por gerenciar as perguntas frequentes (FAQs) no sistema BRISA Helpdesk, que compõem a base de conhecimento utilizada para suporte e resolução de chamados. 
+
+As FAQs são organizadas por categorias e podem ser referenciadas em atendimentos (tb_ticket_handling) associados a sessões de chamados. Cada FAQ pode ser criada ou atualizada por usuários. 
+
+Este módulo assegura a gestão eficiente do conhecimento, permitindo o rastreamento de FAQs, suas categorias e associações com atendimentos em chamados.
+
+#### 9.3 Modelo Relacional
+
+[![](./images/faq-module.svg)](./images/faq-module.svg)
+
+### 10 Gerenciamento de Feedback
+
+#### 10.1 Modelo Conceitual
+
+
+```mermaid
+erDiagram
+    Feedback_de_Sessao |o--|| Usuario : tem
+    Feedback_de_Sessao |o--|| Valor_de_Avaliacao : tem
+    Feedback_de_Sessao |o--|| Sessao_de_Chamado : tem
+    
+```
+
+#### 10.2 Descrição
+
+O módulo de Gerenciamento de Feedback é responsável por gerenciar os feedbacks fornecidos por usuários no sistema BRISA Helpdesk. Os feedbacks são associados às sessões de chamado e permitem que solicitantes avaliem a qualidade do atendimento ou serviço prestado. 
+
+Este módulo assegura a coleta e rastreamento de avaliações, vinculando-as aos respectivos chamados e usuários, para melhorar a experiência do cliente e a eficiência do suporte.
+
+#### 10.3 Modelo Relacional
+
+[![](./images/feedback-module.svg)](./images/feedback-module.svg)
+
+### 11 Gerenciamento de Auditoria
+
+#### 11.1 Modelo Conceitual
+
+```mermaid
+erDiagram
+    Auditoria |o--|| Tabela : tem
+    Auditoria |o--|| Coluna : tem
+    Auditoria |o--|| Identificador_de_Registro : tem
+    Auditoria |o--|| Valor_Anterior : tem
+    Auditoria |o--|| Novo_Valor : tem
+    Auditoria |o--|| Responsavel : tem
+    Auditoria |o--|| Data : tem    
+```
+
+#### 11.2 Descrição
+
+O módulo de Gerenciamento de Auditoria é responsável por gerenciar os registros de auditoria no sistema BRISA Helpdesk. Ele rastreia as ações realizadas por usuários. 
+
+Os registros de auditoria (tb_general_audit) capturam eventos relacionados a alterações ou exclusões no sistema, associados a um usuário específico, garantindo transparência e rastreabilidade das operações. 
+
+Este módulo assegura a gestão eficiente dos logs de auditoria, permitindo monitorar atividades realizadas por diferentes tipos de usuários.
+
+#### 11.3 Modelo Relacional
+
+[![](./images/audit-module.svg)](./images/audit-module.svg)
