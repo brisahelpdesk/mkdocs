@@ -8,6 +8,7 @@
 | 30/06/2025 | 0.2    | Adiciona estrutura do documento | [Maelton Lima dos Santos](https://github.com/Maelton) |
 | 30/06/2025 | 0.3    | Adiciona gerenciamento de autenticacao | [Maelton Lima dos Santos](https://github.com/Maelton) |
 | 30/06/2025 | 0.4    | Adiciona gerenciamento de produtos | [Maelton Lima dos Santos](https://github.com/Maelton) |
+| 30/06/2025 | 0.5    | Adiciona gerenciamento de clientes | [Maelton Lima dos Santos](https://github.com/Maelton) |
 
 ## Descrição
 
@@ -21,9 +22,9 @@ Este documento será atualizado conforme novas entidades forem sendo adicionadas
 
 ## Principais Módulos da Aplicação
 
-### Gerenciamento de Autenticação
+### 1 Gerenciamento de Autenticação
 
-#### Modelo Conceitual
+#### 1.1 Modelo Conceitual
 
 ```mermaid
 erDiagram
@@ -38,7 +39,7 @@ erDiagram
     Client ||--o{ ClientUser : associa
 ```
 
-#### Descrição
+#### 1.2 Descrição
 
 O módulo de Gerenciamento de Autenticação gerencia a autenticação e autorização de usuários no sistema BRISA Helpdesk. Ele suporta três tipos de usuários que podem fazer login: Client (clientes, especialização em tb_client), ClientUser (usuários vinculados a clientes, especialização em tb_client_user), e Employee (funcionários, especialização em tb_employee). 
 
@@ -58,13 +59,13 @@ As principais entidades incluem:
     - **ClientUser**: Usuários vinculados a clientes, registrados em tb_client_user, com login próprio por cliente.
     - **Employee**: Funcionários da empresa, registrados em tb_employee.
 
-#### Modelo Relacional
+#### 1.3 Modelo Relacional
 
 [![](./images/authentication-module.svg)](./images/authentication-module.svg)
 
-### Gerenciamento de Produtos
+### 2 Gerenciamento de Produtos
 
-#### Modelo Conceitual
+#### 2.1 Modelo Conceitual
 
 ```mermaid
 erDiagram
@@ -75,7 +76,7 @@ erDiagram
     CatalogItem }o--o{ SLA : associado_a
 ```
 
-#### Descrição
+#### 2.2 Descrição
 
 O módulo de Gerenciamento de Produtos é responsável por gerenciar os itens do catálogo do sistema BRISA Helpdesk, que incluem produtos e serviços oferecidos aos clientes. Ele organiza os itens do catálogo em tipos específicos e permite a especialização em produtos (físicos ou não) e serviços (físicos ou não). 
 
@@ -90,21 +91,60 @@ As principais entidades incluem:
 - **Contract (tb_contract)**: Representa contratos associados a clientes, que podem incluir múltiplos itens do catálogo.
 - **SLA (tb_sla)**: Define acordos de nível de serviço, que podem estar associados a itens do catálogo para especificar tempos de resposta e resolução.
 
-#### Modelo Relacional
+#### 2.3 Modelo Relacional
 
 [![](./images/products-module.svg)](./images/products-module.svg)
 
-### Gerenciamento de Clientes
+### 3 Gerenciamento de Clientes
 
-#### Modelo Conceitual
-#### Descrição
-#### Modelo Relacional
+#### 3.1 Modelo Conceitual
 
-### Gerenciamento de Colaboradores
+```mermaid
+erDiagram
+    ClientType ||--o{ Client : classifica
+    ClientStatus ||--o{ Client : define
+    Address ||--o{ Client : localiza
+    Phone ||--o{ Client : contata
+    User ||--o| Client : especializa
+    Client ||--o| IndividualClient : especializa
+    Client ||--o| CorporateClient : especializa
+    Client ||--o{ ClientUser : associa
+    User ||--o| ClientUser : especializa
+    BusinessSector }o--o{ Client : associado_a
+    BusinessSegment }o--o{ Client : associado_a
+    CompanyCategory ||--o{ CorporateClient : classifica
+    User ||--o{ Phone : possui
+```
 
-#### Modelo Conceitual
-#### Descrição
-#### Modelo Relacional
+#### 3.2 Descrição
+
+O módulo de Gerenciamento de Clientes é responsável por gerenciar as informações dos clientes no sistema BRISA Helpdesk, incluindo pessoas físicas (tb_individual_client) e jurídicas (tb_corporate_client), bem como usuários vinculados a clientes (tb_client_user). Ele categoriza os clientes por tipo, status, setores de negócios e segmentos, além de associar endereços e números de telefone. 
+
+Este módulo permite o rastreamento detalhado de informações de contato, classificações de clientes e suas associações com setores e segmentos de negócios, garantindo uma gestão eficiente das relações com os clientes.
+
+As principais entidades incluem:
+
+- **Client (tb_client)**: Tabela base para todos os clientes, vinculada a um usuário (tb_user) e associada a um tipo, status, endereço e telefone.
+- **ClientType (tb_client_type)**: Define categorias de clientes (e.g., "Premium", "Standard").
+- **ClientStatus (tb_client_status)**: Define os status possíveis para clientes (e.g., "Ativo", "Inativo").
+- **IndividualClient (tb_individual_client)**: Especialização de Client para pessoas físicas, com informações como CPF e data de nascimento.
+- **CorporateClient (tb_corporate_client)**: Especialização de Client para empresas, com informações como CNPJ e razão social.
+- **Address (tb_address)**: Armazena informações de endereços físicos dos clientes.
+- **Phone (tb_phone)**: Armazena números de telefone associados aos clientes.
+- **ClientUser (tb_client_user)**: Representa usuários vinculados a clientes, com login próprio por cliente.
+- **BusinessSector (tb_business_sector)**: Define setores de negócios (e.g., "Tecnologia", "Varejo") associados a clientes.
+- **BusinessSegment (tb_business_segment)**: Define segmentos de negócios (e.g., "Software", "E-commerce") associados a clientes.
+- **CompanyCategory (tb_company_category)**: Define categorias de empresas com base no tamanho (número de funcionários).
+
+#### 3.3 Modelo Relacional
+
+[![](./images/clients-module.svg)](./images/clients-module.svg)
+
+### 4 Gerenciamento de Colaboradores
+
+#### 4.1 Modelo Conceitual
+#### 4.2 Descrição
+#### 4.3 Modelo Relacional
 
 ### Gerenciamento de Contratos
 
