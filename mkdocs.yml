@@ -22,3 +22,6 @@ nav:
     - Documento de arquitetura: planning/system-architecture/system-architecture.md
     - Documentos de processos:
       - Processo de criação de cliente: planning/system-processes/create-new-client.md
+    - Documentos de banco de dados:
+      - Padrão de nomenclatura: planning/database/naming-convetions.md
+      - Documento de modelo relacional: planning/database/relational-model.md
