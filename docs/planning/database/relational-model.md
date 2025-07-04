@@ -31,7 +31,7 @@ Este documento será atualizado conforme novas entidades forem sendo adicionadas
 
 ## Principais Módulos da Aplicação
 
-### 1 Gerenciamento de Autenticação
+### 1. Gerenciamento de Autenticação
 
 #### 1.1 Modelo Conceitual
 
@@ -71,7 +71,7 @@ As principais entidades incluem:
 
 [![](./images/authentication-module.svg)](./images/authentication-module.svg)
 
-### 2 Gerenciamento de Produtos
+### 2. Gerenciamento de Produtos
 
 #### 2.1 Modelo Conceitual
 
@@ -103,7 +103,7 @@ As principais entidades incluem:
 
 [![](./images/products-module.svg)](./images/products-module.svg)
 
-### 3 Gerenciamento de Clientes
+### 3. Gerenciamento de Clientes
 
 #### 3.1 Modelo Conceitual
 
@@ -147,7 +147,7 @@ As principais entidades incluem:
 
 [![](./images/clients-module.svg)](./images/clients-module.svg)
 
-### 4 Gerenciamento de Colaboradores
+### 4. Gerenciamento de Colaboradores
 
 #### 4.1 Modelo Conceitual
 
@@ -189,7 +189,7 @@ As principais entidades incluem:
 
 [![](./images/employees-module.svg)](./images/employees-module.svg)
 
-### 5 Gerenciamento de Contratos
+### 5. Gerenciamento de Contratos
 
 #### 5.1 Modelo Conceitual
 
@@ -226,7 +226,7 @@ As principais entidades incluem:
 
 [![](./images/contracts-module.svg)](./images/contracts-module.svg)
 
-### 6 Gerenciamento de SLAs
+### 6. Gerenciamento de SLAs
 
 #### 6.1 Modelo Conceitual
 
@@ -263,7 +263,7 @@ As principais entidades incluem:
 
 [![](./images/sla-module.svg)](./images/sla-module.svg)
 
-### 7 Gerenciamento de Chamados
+### 7. Gerenciamento de Chamados
 
 #### 7.1 Modelo Conceitual
 
@@ -303,7 +303,7 @@ Este módulo assegura a gestão eficiente dos chamados, incluindo status, tipos,
 [![](./images/ticketing-module.svg)](./images/ticketing-module.svg)
 As relações foram extramamente reduzidas, observe as foreign keys para ter maior precisão.
 
-### 8 Gerenciamento de Chats
+### 8. Gerenciamento de Chats
 
 #### 8.1 Modelo Conceitual
 
@@ -326,7 +326,7 @@ Este módulo assegura a gestão eficiente das conversas, permitindo o rastreamen
 
 [![](./images/chat-module.svg)](./images/chat-module.svg)
 
-### 9 Gerenciamento de Base de Conhecimento
+### 9. Gerenciamento de Base de Conhecimento
 
 #### 9.1 Modelo Conceitual
 
@@ -350,7 +350,7 @@ Este módulo assegura a gestão eficiente do conhecimento, permitindo o rastream
 
 [![](./images/faq-module.svg)](./images/faq-module.svg)
 
-### 10 Gerenciamento de Feedback
+### 10. Gerenciamento de Feedback
 
 #### 10.1 Modelo Conceitual
 
@@ -373,7 +373,7 @@ Este módulo assegura a coleta e rastreamento de avaliações, vinculando-as aos
 
 [![](./images/feedback-module.svg)](./images/feedback-module.svg)
 
-### 11 Gerenciamento de Auditoria
+### 11. Gerenciamento de Auditoria
 
 #### 11.1 Modelo Conceitual
 

@@ -8,6 +8,11 @@
 | 08/06/2025 | 0.2    | Adiciona diagrama de arquitetura | [Maelton Lima dos Santos](https://github.com/Maelton) |
 | 08/06/2025 | 0.5    | Adiciona referencia aos módulos backend | [Maelton Lima dos Santos](https://github.com/Maelton) |
 | 22/06/2025 | 0.6    | Adiciona arquitetura de software backend | [Maelton Lima dos Santos](https://github.com/Maelton) |
+| 04/07/2025 | 0.7    | Adiciona user module | [Maelton Lima dos Santos](https://github.com/Maelton) |
+| 04/07/2025 | 0.8    | Adiciona chat module | [Maelton Lima dos Santos](https://github.com/Maelton) |
+| 04/07/2025 | 0.9    | Adiciona feedback module | [Maelton Lima dos Santos](https://github.com/Maelton) |
+| 04/07/2025 | 0.10   | Adiciona product module | [Maelton Lima dos Santos](https://github.com/Maelton) |
+| 04/07/2025 | 1.0    | Adiciona module dependency diagrams | [Maelton Lima dos Santos](https://github.com/Maelton) |
 
 ## 2. Visão Geral
 
@@ -18,18 +23,179 @@ O sistema adota uma **arquitetura modular monolítica** baseada em **NestJS (bac
 [![](./images/system-architecture.drawio.svg)](./images/system-architecture.drawio.svg)
 
 ### 3.1 Módulos Backend 
+- [**UserModule**](./modules/user-module.md): criação e gerenciamento de usuários do sistema
 - [**AuthModule**](./modules/auth-module.md): autenticação, cadastro de usuários, 2FA
 - [**TicketModule**](./modules/ticket-module.md): abertura, consulta e interações de chamados
 - [**AssignmentModule**](./modules/assignment-module.md): atribuição automática de chamados
+- [**ChatModule**](./modules/chat-module.md): gerenciamento de chats do sistema
 - [**KnowledgeBaseModule**](./modules/knowledge-base-module.md): artigos, fluxo de aprovação, sugestões por palavra-chave
 - [**SelfServiceModule**](./modules/selfservice-module.md): chamados gerados automaticamente por acesso à base de conhecimento
+- [**FeedbackModule**](./modules/feedback-module.md): gerenciamento de feedback dos clientes
 - [**SlaModule**](./modules/sla-module.md): controle de SLA e monitoramento de prazos
 - [**TimerModule**](./modules/timer-module.md): cronômetro por interação ou técnico
+- [**ProductModule**](./modules/product-module.md): gerenciamento de produtos e serviços
 - [**ContractModule**](./modules/contract-module.md): validação de cobertura por cliente/produto
 - [**ReportModule**](./modules/report-module.md): geração de relatórios em PDF/Excel
 - [**NotificationModule**](./modules/notification-module.md): notificações por e-mail e push
 - [**AuditModule**](./modules/audit-module.md): registro de ações críticas
 - [**DashboardModule**](./modules/dashboard-module.md): indicadores gráficos e filtros
+
+### 3.2 Diagrama de Dependência entre Módulos
+
+[![](./images/backend-module-dependency-diagram.drawio.svg)](./images/backend-module-dependency-diagram.drawio.svg)
+
+#### 3.2.1 AuthModule
+
+[![](./images/auth-module-dependency-diagram.drawio.svg)](./images/auth-module-dependency-diagram.drawio.svg)
+
+| **Depende de**      | **Descrição da Dependência**                    |
+| ------------------- | ----------------------------------------------- |
+| UserModule          | Gerencia as credenciais dos usuários.           |
+
+#### 3.2.2 UserModule
+
+[![](./images/user-module-dependency-diagram.drawio.svg)](./images/user-module-dependency-diagram.drawio.svg)
+
+| **Depende de**      | **Descrição da Dependência**                    |
+| ------------------- | ----------------------------------------------- |
+| NotificationModule  | Envia alertas de cadastro e ativação.           |
+
+#### 3.2.3 TicketModule
+
+[![](./images/ticket-module-dependency-diagram.drawio.svg)](./images/ticket-module-dependency-diagram.drawio.svg)
+
+| **Depende de**      | **Descrição da Dependência**                    |
+| ------------------- | ----------------------------------------------- |
+| UserModule          | Chamados são criados por usuários.              |
+| ProductModule       | Cada chamado envolve um produto.                |
+| ContractModule      | Valida a cobertura contratual.                  |
+| AssignmentModule    | Atribuição automática ao criar chamado.         |
+| SlaModule           | Define prazos com base no tipo de chamado.      |
+| TimerModule         | Tempo de atendimento é rastreado.               |
+| ChatModule          | Chat contextualizado por chamado.               |
+| FeedbackModule      | Recebe feedback pós-atendimento.                |
+| NotificationModule  | Dispara notificações de status.                 |
+
+#### 3.2.4 SelfServiceModule
+
+[![](./images/self_service-module-dependency-diagram.drawio.svg)](./images/self_service-module-dependency-diagram.drawio.svg)
+
+| **Depende de**      | **Descrição da Dependência**                    |
+| ------------------- | ----------------------------------------------- |
+| KnowledgeBaseModule | Sugere artigos com base em palavras-chave.      |
+| TicketModule        | Cria chamados automaticamente.                  |
+| FeedbackModule      | Coleta avaliação da experiência.                |
+
+#### 3.2.5 FeedbackModule
+
+[![](./images/feedback-module-dependency-diagram.drawio.svg)](./images/feedback-module-dependency-diagram.drawio.svg)
+
+| **Depende de**      | **Descrição da Dependência**                    |
+| ------------------- | ----------------------------------------------- |
+| TicketModule        | Avaliações são baseadas em chamados.            |
+| UserModule          | Usuários avaliam artigos.                       |
+
+#### 3.2.6 SLAModule
+
+[![](./images/sla-module-dependency-diagram.drawio.svg)](./images/sla-module-dependency-diagram.drawio.svg)
+
+| **Depende de**      | **Descrição da Dependência**                    |
+| ------------------- | ----------------------------------------------- |
+|         -           | Não depende de nenhum outro módulo.             |
+
+#### 3.2.7 TimerModule
+
+[![](./images/timer-module-dependency-diagram.drawio.svg)](./images/timer-module-dependency-diagram.drawio.svg)
+
+| **Depende de**      | **Descrição da Dependência**                    |
+| ------------------- | ----------------------------------------------- |
+| TicketModule        | Contagem de tempo por atendimento.              |
+
+#### 3.2.8 ContractModule
+
+[![](./images/contract-module-dependency-diagram.drawio.svg)](./images/contract-module-dependency-diagram.drawio.svg)
+
+| **Depende de**      | **Descrição da Dependência**                    |
+| ------------------- | ----------------------------------------------- |
+| ProductModule       | Contratos incluem produtos e serviços.          |
+| UserModule          | Contratos são vinculados a clientes (usuários). |
+
+#### 3.2.9 ReportModule
+
+[![](./images/report-module-dependency-diagram.drawio.svg)](./images/report-module-dependency-diagram.drawio.svg)
+
+| **Depende de**      | **Descrição da Dependência**                    |
+| ------------------- | ----------------------------------------------- |
+| TicketModule        | Análise de desempenho de chamados.              |
+| FeedbackModule      | Métricas de satisfação.                         |
+| TimerModule         | Dados de tempo e SLA.                           |
+| SlaModule           | Monitoramento de prazos e violações.            |
+| ProductModule       | Agrupamento por produto.                        |
+
+#### 3.2.10 DashboardModule
+
+[![](./images/dashboard-module-dependency-diagram.drawio.svg)](./images/dashboard-module-dependency-diagram.drawio.svg)
+
+| **Depende de**      | **Descrição da Dependência**                    |
+| ------------------- | ----------------------------------------------- |
+| ReportModule        | Consome dados consolidados.                     |
+| TicketModule        | Exibe volume de chamados.                       |
+| FeedbackModule      | Exibe estatísticas de feedback.                 |
+| SlaModule           | Métricas de SLA.                                |
+| TimerModule         | Tempo médio por técnico.                        |
+| ProductModule       | Indicadores por produto.                        |
+
+#### 3.2.11 NotificationModule
+
+[![](./images/notification-module-dependency-diagram.drawio.svg)](./images/notification-module-dependency-diagram.drawio.svg)
+
+| **Depende de**      | **Descrição da Dependência**                    |
+| ------------------- | ----------------------------------------------- |
+| ChatModule          | Envia alertas por nova mensagem.                |
+| TicketModule        | Dispara eventos de chamado.                     |
+| FeedbackModule      | Notifica feedbacks recebidos.                   |
+
+#### 3.2.12 AuditModule
+
+[![](./images/audit-module-dependency-diagram.drawio.svg)](./images/audit-module-dependency-diagram.drawio.svg)
+
+| **Depende de**      | **Descrição da Dependência**                    |
+| ------------------- | ----------------------------------------------- |
+| AuthModule          | Registra logins e autenticações.                |
+
+#### 3.2.13 AssignmentModule
+
+[![](./images/assignment-module-dependency-diagram.drawio.svg)](./images/assignment-module-dependency-diagram.drawio.svg)
+
+| **Depende de**      | **Descrição da Dependência**                    |
+| ------------------- | ----------------------------------------------- |
+| UserModule          | Atribuição depende da lista de usuários.        |
+| TicketModule        | Atribuições são feitas sobre chamados. |
+
+#### 3.2.14 ChatModule
+
+[![](./images/chat-module-dependency-diagram.drawio.svg)](./images/chat-module-dependency-diagram.drawio.svg)
+
+| **Depende de**      | **Descrição da Dependência**                      |
+| ------------------- | ------------------------------------------------- |
+| UserModule          | Identifica remetente e destinatário.              |
+| TicketModule        | Um chat é relacionado a um atendimento de chamado |
+
+#### 3.2.15 ProductModule
+
+[![](./images/product-module-dependency-diagram.drawio.svg)](./images/product-module-dependency-diagram.drawio.svg)
+
+| **Depende de**      | **Descrição da Dependência**                    |
+| ------------------- | ----------------------------------------------- |
+|          -          | Não depende de nenhum outro módulo.             |
+
+#### 3.2.16 KnowledgeBaseModule
+
+[![](./images/knowledge-base-module-dependency-diagram.drawio.svg)](./images/knowledge-base-module-dependency-diagram.drawio.svg)
+
+| **Depende de**      | **Descrição da Dependência**                    |
+| ------------------- | ----------------------------------------------- |
+|          -          | Não depende de nenhum outro módulo.             |
 
 ## 4. Arquitetura de Software (Backend)
 
@@ -52,6 +218,4 @@ Esta abordagem organiza o código em quatro camadas principais, cada uma com res
 | **Persistence Layer**  | É o código da sua aplicação que se comunica com o Database Layer. É responsável por consultar, salvar, atualizar e deletar dados, independentemente de qual tecnologia de banco está por trás (ORM, JDBC, Prisma, etc.). | `user.repository.ts`, `prisma.service.ts` |
 | **Database Layer**     | Infraestrutura de armazenamento físico e persistente. Inclui bancos de dados relacionais (PostgreSQL), não relacionais (Redis) e armazenamentos de objetos (ex.: Firebase Storage, AWS S3). | PostgreSQL, Redis, Firebase |
 
-<!-- ## 5. Modelo Entidade Relacionamento -->
-
-<!-- ## 6. Diagrama de Classes -->
+<!-- ## 5. Diagrama de Classes -->
