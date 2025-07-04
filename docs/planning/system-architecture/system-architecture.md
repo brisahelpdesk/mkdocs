@@ -10,6 +10,7 @@
 | 22/06/2025 | 0.6    | Adiciona arquitetura de software backend | [Maelton Lima dos Santos](https://github.com/Maelton) |
 | 04/07/2025 | 0.7    | Adiciona user module | [Maelton Lima dos Santos](https://github.com/Maelton) |
 | 04/07/2025 | 0.8    | Adiciona chat module | [Maelton Lima dos Santos](https://github.com/Maelton) |
+| 04/07/2025 | 0.9    | Adiciona feedback module | [Maelton Lima dos Santos](https://github.com/Maelton) |
 
 ## 2. Visão Geral
 
