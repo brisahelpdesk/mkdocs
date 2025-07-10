@@ -13,6 +13,7 @@
 | 04/07/2025 | 0.9    | Adiciona feedback module | [Maelton Lima dos Santos](https://github.com/Maelton) |
 | 04/07/2025 | 0.10   | Adiciona product module | [Maelton Lima dos Santos](https://github.com/Maelton) |
 | 04/07/2025 | 1.0    | Adiciona module dependency diagrams | [Maelton Lima dos Santos](https://github.com/Maelton) |
+| 10/07/2025 | 1.5    | Corrige module dependency diagrams | [Maelton Lima dos Santos](https://github.com/Maelton) |
 
 ## 2. Visão Geral
 
@@ -109,7 +110,7 @@ O sistema adota uma **arquitetura modular monolítica** baseada em **NestJS (bac
 
 | **Depende de**      | **Descrição da Dependência**                    |
 | ------------------- | ----------------------------------------------- |
-| TicketModule        | Contagem de tempo por atendimento.              |
+|          -          | Não depende de nenhum outro módulo.             |
 
 #### 3.2.8 ContractModule
 
@@ -151,9 +152,7 @@ O sistema adota uma **arquitetura modular monolítica** baseada em **NestJS (bac
 
 | **Depende de**      | **Descrição da Dependência**                    |
 | ------------------- | ----------------------------------------------- |
-| ChatModule          | Envia alertas por nova mensagem.                |
-| TicketModule        | Dispara eventos de chamado.                     |
-| FeedbackModule      | Notifica feedbacks recebidos.                   |
+|          -          | Não depende de nenhum outro módulo.             |
 
 #### 3.2.12 AuditModule
 
@@ -176,10 +175,9 @@ O sistema adota uma **arquitetura modular monolítica** baseada em **NestJS (bac
 
 [![](./images/chat-module-dependency-diagram.drawio.svg)](./images/chat-module-dependency-diagram.drawio.svg)
 
-| **Depende de**      | **Descrição da Dependência**                      |
-| ------------------- | ------------------------------------------------- |
-| UserModule          | Identifica remetente e destinatário.              |
-| TicketModule        | Um chat é relacionado a um atendimento de chamado |
+| **Depende de**      | **Descrição da Dependência**                       |
+| ------------------- | -------------------------------------------------- |
+| NotificationModule  | Chats enviam notificações para usuários envolvidos |
 
 #### 3.2.15 ProductModule
 
