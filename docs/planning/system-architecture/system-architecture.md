@@ -160,7 +160,7 @@ O sistema adota uma **arquitetura modular monolítica** baseada em **NestJS (bac
 
 | **Depende de**      | **Descrição da Dependência**                    |
 | ------------------- | ----------------------------------------------- |
-| AuthModule          | Registra logins e autenticações.                |
+| UserModule          | Registra ações dos usuários.                    |
 
 #### 3.2.13 AssignmentModule
 
